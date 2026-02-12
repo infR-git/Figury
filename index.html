@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Obliczanie pól i obwodów figur</title>
+
+    <style>
+        body {
+            background-color: #ddd;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            width: 600px;
+            margin: 40px auto;
+            background-color: #f5f0dc;
+            padding: 20px;
+            border: 4px solid black;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkred;
+        }
+
+        fieldset {
+            background-color: #e6dc8f;
+            border: 2px solid #6a8caf;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="button"] {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .wynik {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="container">
+<h1>Figury geometryczne</h1>
+
+<fieldset>
+<legend>Prostokąt</legend>
+
+<label>Długość boku a = </label><br>
+<input type="number" id="pr_a"><br>
+
+<label>Długość boku b = </label><br>
+<input type="number" id="pr_b"><br>
+
+<input type="button" value="Oblicz" onclick="prostokat()">
+
+<div id="wynik_pr" class="wynik"></div>
+</fieldset>
+
+</div>
+
+<script>
+function prostokat() {
+    let a = parseFloat(document.getElementById("pr_a").value);
+    let b = parseFloat(document.getElementById("pr_b").value);
+
+    if (isNaN(a) || isNaN(b)) {
+        document.getElementById("wynik_pr").innerHTML =
+            "Podaj poprawne liczby!";
+        return;
+    }
+
+    let pole = a * b;
+    let obwod = 2 * (a + b);
+
+    document.getElementById("wynik_pr").innerHTML =
+        "Pole = " + pole +
+        "<br>Obwód = " + obwod;
+}
+</script>
+
+</body>
+</html>

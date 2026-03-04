@@ -1,183 +1,71 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Pola i obwody figur</title>
-
-<style>
-body {
-    background-color: #d9d9d9;
-    font-family: Arial;
-    text-align: center;
-}
-
-.main {
-    width: 600px;
-    margin: 40px auto;
-    background-color: #efe8c8;
-    padding: 20px;
-    border: 6px solid black;
-}
-
-h1 {
-    color: darkred;
-    font-style: italic;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.box {
-    background-color: #e6db7f;
-    padding: 15px;
-    border-radius: 8px;
-    border: 2px solid #4a86e8;
-}
-
-input {
-    width: 120px;
-    margin: 5px 0;
-}
-
-button {
-    margin-top: 8px;
-    cursor: pointer;
-}
-.result {
-    margin-top: 8px;
-    font-weight: bold;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna - Moje Projekty</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #4a86e8;
+        }
+        .card h2 {
+            margin: 0;
+            font-size: 2rem;
+            color: #4a86e8;
+        }
+        .card p {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-
-<div class="main">
-<h1>Strona do obliczania pól i obwodów figur geometrycznych</h1>
-
-<div class="container">
-
-<!-- Prostokąt -->
-<div class="box">
-<h3>Prostokąt</h3>
-Długość boku a = <br>
-<input type="number" id="pa"><br>
-Długość boku b = <br>
-<input type="number" id="pb"><br>
-<button onclick="prostokat()">Oblicz</button>
-<div class="result" id="wynikProstokat"></div>
-</div>
-
-<!-- Trójkąt -->
-<div class="box">
-<h3>Trójkąt</h3>
-Długość podstawy a = <br>
-<input type="number" id="ta"><br>
-Wysokość h = <br>
-<input type="number" id="th"><br>
-<button onclick="trojkat()">Oblicz</button>
-<div class="result" id="wynikTrojkat"></div>
-</div>
-
-<!-- Trapez -->
-<div class="box">
-<h3>Trapez</h3>
-Długość podstawy a = <br>
-<input type="number" id="tra"><br>
-Długość podstawy b = <br>
-<input type="number" id="trb"><br>
-Wysokość h = <br>
-<input type="number" id="trh"><br>
-<button onclick="trapez()">Oblicz</button>
-<div class="result" id="wynikTrapez"></div>
-</div>
-
-<!-- Okrąg -->
-<div class="box">
-<h3>Okrąg</h3>
-Promień r = <br>
-<input type="number" id="r"><br>
-<button onclick="okrag()">Oblicz</button>
-<div class="result" id="wynikOkrag"></div>
-</div>
-
-</div>
-</div>
-
-<script>
-
-// PROSTOKĄT
-function prostokat() {
-    let a = Number(document.getElementById("pa").value);
-    let b = Number(document.getElementById("pb").value);
-
-    if (a <= 0 || b <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = a * b;
-    let obwod = 2 * a + 2 * b;
-
-    document.getElementById("wynikProstokat").innerHTML =
-        "Pole = " + pole + "<br>Obwód = " + obwod;
-}
-
-// TRÓJKĄT
-function trojkat() {
-    let a = Number(document.getElementById("ta").value);
-    let h = Number(document.getElementById("th").value);
-
-    if (a <= 0 || h <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = (a * h) / 2;
-
-    document.getElementById("wynikTrojkat").innerHTML =
-        "Pole = " + pole;
-}
-
-// TRAPEZ
-function trapez() {
-    let a = Number(document.getElementById("tra").value);
-    let b = Number(document.getElementById("trb").value);
-    let h = Number(document.getElementById("trh").value);
-
-    if (a <= 0 || b <= 0 || h <= 0) {
-        alert("Podaj poprawne wartości!");
-        return;
-    }
-
-    let pole = ((a + b) * h) / 2;
-
-    document.getElementById("wynikTrapez").innerHTML =
-        "Pole = " + pole;
-}
-
-// OKRĄG
-function okrag() {
-    let r = Number(document.getElementById("r").value);
-
-    if (r <= 0) {
-        alert("Podaj poprawny promień!");
-        return;
-    }
-
-    let pole = Math.PI * r * r;
-    let obwod = 2 * Math.PI * r;
-
-    document.getElementById("wynikOkrag").innerHTML =
-        "Pole = " + pole.toFixed(2) +
-        "<br>Obwód = " + obwod.toFixed(2);
-}
-
-</script>
-
+    <h1>Witaj w moich projektach!</h1>
+    
+    <div class="container">
+        <a href="/A/" class="card">
+            <h2>A</h2>
+            <p>Projekt A (Kalkulator)</p>
+        </a>
+        <a href="/B/" class="card">
+            <h2>B</h2>
+            <p>Opis projektu B</p>
+        </a>
+        <a href="/C/" class="card">
+            <h2>C</h2>
+            <p>Opis projektu C</p>
+        </a>
+    </div>
 </body>
 </html>

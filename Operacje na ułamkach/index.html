@@ -2,11 +2,64 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Projekt C</title>
+    <title>Operacje na ułamkach</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>To jest Projekt C</h1>
-    <p>Treść projektu C...</p>
-    <a href="/">Wróć do strony głównej</a>
+
+<h1>Operacje na ułamkach</h1>
+
+<div class="container">
+
+    <!-- Skracanie -->
+    <div class="box">
+        <h2>Skracanie</h2>
+
+        <input type="number" id="num1" placeholder="Licznik">
+        <hr>
+        <input type="number" id="den1" placeholder="Mianownik">
+
+        <button onclick="skroc()">Skróć</button>
+
+        <p>Ułamek skrócony ma postać:</p>
+
+        <input type="text" id="wynikNum" readonly>
+        <hr>
+        <input type="text" id="wynikDen" readonly>
+    </div>
+
+    <!-- Dodawanie -->
+    <div class="box">
+        <h2>Dodawanie</h2>
+
+        <div class="fraction">
+            <input type="number" id="num2">
+            <hr>
+            <input type="number" id="den2">
+        </div>
+
+        <span class="plus">+</span>
+
+        <div class="fraction">
+            <input type="number" id="num3">
+            <hr>
+            <input type="number" id="den3">
+        </div>
+
+        <span>=</span>
+
+        <div class="fraction">
+            <input type="text" id="wynikNum2" readonly>
+            <hr>
+            <input type="text" id="wynikDen2" readonly>
+        </div>
+
+        <br><br>
+        <button onclick="dodaj()">Dodaj</button>
+    </div>
+
+</div>
+
+<script src="funkcje.js"></script>
 </body>
 </html>
